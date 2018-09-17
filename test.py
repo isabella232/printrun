@@ -3,6 +3,9 @@ from printrun.printcore import printcore
 from printrun import gcoder
 import time
 
+# REPRAP GCODES:
+# https://reprap.org/wiki/G-code
+
 # jmil says FIND THE CORRECT PORT FIRST WITH "ls /dev/tty.usb*"
 import subprocess
 batcmd="ls /dev/tty.usb*"
@@ -25,7 +28,7 @@ gcode = gcoder.LightGCode(gcode)
 p.startprint(gcode) # this will start a print
 
 
-# p.disconnect() # this is how you disconnect from the printer once you are done. This will also stop running prints.
+#p.disconnect() # this is how you disconnect from the printer once you are done. This will also stop running prints.
 
 
 
