@@ -4,8 +4,18 @@ from printrun import gcoder
 import time
 
 # jmil says FIND THE CORRECT PORT FIRST WITH "ls /dev/tty.usb*"
+import subprocess
+batcmd="ls /dev/tty.usb*"
+allPorts = subprocess.check_output(batcmd, shell=True)
+# this could contain multiple lines. Get only the first line
+thePortsArray = allPorts.splitlines()
+print(thePortsArray)
+theFirstPort = thePortsArray[0]
+theCleanPortString = theFirstPort.decode("utf-8").strip()
+print(theCleanPortString)
 
-p=printcore("/dev/tty.usbmodem144241",115200) # or p.printcore('COM3',115200) on Windows
+p=printcore(theCleanPortString,115200) # or p.printcore('COM3',115200) on Windows
+# e.g.: p=printcore("/dev/tty.usbmodem144241",115200) # or p.printcore('COM3',115200) on Windows
 
 while not p.online: time.sleep(0.1)
 
