@@ -17,6 +17,7 @@ print(theCleanPortString)
 p=printcore(theCleanPortString,115200) # or p.printcore('COM3',115200) on Windows
 # e.g.: p=printcore("/dev/tty.usbmodem144241",115200) # or p.printcore('COM3',115200) on Windows
 
+# Wait for the printer to connect. Check every 100 ms
 while not p.online: time.sleep(0.1)
 
 gcode=[i.strip() for i in open('test.gcode')] # or pass in your own array of gcode lines instead of reading from a file
