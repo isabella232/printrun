@@ -51,7 +51,7 @@ viewing ports on the Pi is a little strange. I've heard that USBs tend to appear
 as ttyUSB<number> however, pronterface autoconnected to ttyACM0. For now I'm 
 assuming this is a reliable port name.
 """
-
+serial_port = '/dev/ttyACM0'
 p = printcore(serial_port,115200) # or p.printcore('COM3',115200) on Windows
 
 # Wait until the motor is ready to receive commands
