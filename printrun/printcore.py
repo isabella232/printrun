@@ -218,15 +218,15 @@ class printcore():
                     self.printer = Serial(port = self.port,
                                           baudrate = self.baud,
                                           timeout = 0.25,
-                                          parity = PARITY_ODD)
-                    self.printer.close()
-                    self.printer.parity = PARITY_NONE
+                                          parity = PARITY_NONE)
+                    #self.printer.close()
+                    #self.printer.parity = PARITY_NONE
                     try:  #this appears not to work on many platforms, so we're going to call it but not care if it fails
                         self.printer.setDTR(dtr);
                     except:
                         #self.logError(_("Could not set DTR on this platform")) #not sure whether to output an error message
                         pass
-                    self.printer.open()
+                    #self.printer.open()
                 except SerialException as e:
                     self.logError(_("Could not connect to %s at baudrate %s:") % (self.port, self.baud) +
                                   "\n" + _("Serial error: %s") % e)
