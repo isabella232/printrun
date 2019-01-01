@@ -1,3 +1,9 @@
+# Mac OSX adding metadata
+*AppleDouble*
+
+# IDE
+*vscode*
+
 *.pyc
 .pronsolerc
 *.swp
