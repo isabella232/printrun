@@ -792,7 +792,7 @@ class pronsole(cmd.Cmd):
         port = self.settings.port
         if (port == "" or port not in p) and len(p) > 0:
             port = p[0]
-        baud = self.settings.baudrate or 115200
+        baud = self.settings.baudrate or 250000
         if len(a) > 0:
             port = a[0]
         if len(a) > 1:
@@ -816,7 +816,7 @@ class pronsole(cmd.Cmd):
     def help_connect(self):
         self.log("Connect to printer")
         self.log("connect <port> <baudrate>")
-        self.log("If port and baudrate are not specified, connects to first detected port at 115200bps")
+        self.log("If port and baudrate are not specified, connects to first detected port at 250000bps")
         ports = self.scanserial()
         if ports:
             self.log("Available ports: ", " ".join(ports))
@@ -827,7 +827,7 @@ class pronsole(cmd.Cmd):
         if (len(line.split()) == 2 and line[-1] != " ") or (len(line.split()) == 1 and line[-1] == " "):
             return [i for i in self.scanserial() if i.startswith(text)]
         elif len(line.split()) == 3 or (len(line.split()) == 2 and line[-1] == " "):
-            return [i for i in ["2400", "9600", "19200", "38400", "57600", "115200"] if i.startswith(text)]
+            return [i for i in ["2400", "9600", "19200", "38400", "57600", "115200", "250000"] if i.startswith(text)]
         else:
             return []
 

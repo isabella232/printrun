@@ -26,7 +26,7 @@ from printrun import gcoder
 
 if __name__ == '__main__':
     setup_logging(sys.stderr)
-    baud = 115200
+    baud = 250000
     loud = False
     statusreport = False
 
@@ -36,7 +36,7 @@ if __name__ == '__main__':
             "  printcore [OPTIONS] PORT FILE\n\n"+\
             "Options:\n"+\
             "  -b, --baud=BAUD_RATE"+\
-                        "\t\tSet baud rate value. Default value is 115200\n"+\
+                        "\t\tSet baud rate value. Default value is 250000\n"+\
             "  -s, --statusreport\t\tPrint progress as percentage\n"+\
             "  -v, --verbose\t\t\tPrint additional progress information\n"+\
             "  -V, --version\t\t\tPrint program's version number and exit\n"+\

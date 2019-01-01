@@ -1141,7 +1141,7 @@ Printrun. If not, see <http://www.gnu.org/licenses/>."""
             scanned = self.scanserial()
             if scanned:
                 port = scanned[0]
-        baud = 115200
+        baud = 250000
         try:
             baud = int(self.baud.GetValue())
         except:

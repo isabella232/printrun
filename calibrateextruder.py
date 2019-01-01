@@ -138,7 +138,7 @@ try:
     # Connect to printer
     w("Connecting to printer..")
     try:
-        p = printcore(port, 115200)
+        p = printcore(port, 250000)
     except:
         print('Error.')
         raise
