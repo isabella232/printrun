@@ -20,11 +20,11 @@ def on_timeout(proc, status_dict):
 
 
 
-runs = 1000 # Default run is 1000
-if len(sys.argv)>1: # If I want to change the num of runs
-    runs = int(sys.argv[1])
-FNULL = open(os.devnull, 'w')
-logfile = open('logfile', 'w')
+# runs = 1000 # Default run is 1000
+# if len(sys.argv)>1: # If I want to change the num of runs
+#     runs = int(sys.argv[1])
+# FNULL = open(os.devnull, 'w')
+# logfile = open('logfile', 'w')
 
 
 # replacing example with a running program. This is a simple python
@@ -133,7 +133,7 @@ currentLayer = 0
     
 
 # layerHeight = 0.1
-layerHeight = 1
+layerHeight = .1
 layerTime = 1
 pauseBeforeLift = 1
 pauseForSetpower = 1
@@ -160,12 +160,12 @@ while True:
     # HOME THE PRINTER
     p.send_now("G28 X")
     print ("HOMING")
-    time.sleep(2)
+    time.sleep(20)
     print ("HOMING COMPLETED!!")
 
 
 
-    for i in range(20):
+    for i in range(130):
     
         if (i+1)*layerHeight >= 100:
             #DON'T PRINT MORE THAN 100 mm TOTAL
