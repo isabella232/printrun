@@ -185,7 +185,7 @@ while True:
         
         
         # PROJECT THE IMAGE
-        command = "feh -x --geometry 1280x800 /home/lumen/Volumetric/3dp/makerook_imgs/" + '%03d' % i + ".png &"
+        command = "feh -x --geometry 1280x800 /home/lumen/Volumetric/3dp/makerook_imgs/" + '%03d' % (i*6) + ".png &"
         print("command #" + str(i+1) + " is '" + command + "'")
         return_code = subprocess.call(command, shell=True)
         print(return_code)
