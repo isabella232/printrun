@@ -165,7 +165,7 @@ while True:
 
 
 
-    for i in range(130):
+    for i in range(135):
     
         if (i+1)*layerHeight >= 100:
             #DON'T PRINT MORE THAN 100 mm TOTAL
@@ -185,7 +185,8 @@ while True:
         
         
         # PROJECT THE IMAGE
-        command = "feh -x --geometry 1280x800 /home/lumen/Volumetric/3dp/makerook_imgs/" + '%03d' % (i*6) + ".png &"
+        # command = "feh -x --geometry 1280x800 /home/lumen/Volumetric/3dp/makerook_imgs/" + '%03d' % (i*6) + ".png &"
+        command = "feh -x --geometry 1280x800 /home/lumen/Volumetric/3dp/makerook_imgs/" + '%03d' % i + ".png &"
         print("command #" + str(i+1) + " is '" + command + "'")
         return_code = subprocess.call(command, shell=True)
         print(return_code)
