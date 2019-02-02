@@ -1,14 +1,16 @@
-#to send a file of gcode to the printer
-from printrun.printcore import printcore
-from printrun import gcoder
-import time
+#!/usr/bin/env python3
 
+#to send a file of gcode to the printer
 
 import subprocess
 import os
 import sys
 import threading
+import time
 
+sys.path.append( '/home/lumen/Volumetric/printrun' )
+from printrun.printcore import printcore
+from printrun import gcoder
 
 # https://stackoverflow.com/questions/35685403/python-run-subprocess-for-certain-time
 def on_timeout(proc, status_dict):
