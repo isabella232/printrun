@@ -32,7 +32,7 @@ def on_timeout(proc, status_dict):
 # args = "exe" # Exe to test
 # test_script = "import time;import sys;time.sleep(%d);sys.exit(100)"
 
-test_script = "killall feh; feh -x --geometry 1280x800 /home/lumen/Volumetric/3dp/LUMEN-logo_imgs/01.png"
+test_script = "killall feh; feh -x --geometry 1280x800 /home/lumen/Volumetric/model-library/LUMEN-logo_imgs/01.png"
 
 
 
@@ -76,7 +76,7 @@ print(str(p.online) + " that the printer is online now yay!")
 
 
 # def projectLayer():
-#     test_script = "killall feh; setpower 255; feh -x --geometry 1280x800 /home/lumen/Volumetric/3dp/LUMEN-logo_imgs/01.png"
+#     test_script = "killall feh; setpower 255; feh -x --geometry 1280x800 /home/lumen/Volumetric/model-library/LUMEN-logo_imgs/01.png"
 #     succ = 0
 #     fail = 0
 #     # set by timer
@@ -185,8 +185,8 @@ while True:
         
         
         # PROJECT THE IMAGE
-        # command = "feh -x --geometry 1280x800 /home/lumen/Volumetric/3dp/makerook_imgs/" + '%03d' % (i*6) + ".png &"
-        command = "feh -x --geometry 1280x800 /home/lumen/Volumetric/3dp/makerook_imgs/" + '%03d' % i + ".png &"
+        # command = "feh -x --geometry 1280x800 /home/lumen/Volumetric/model-library/makerook_imgs/" + '%03d' % (i*6) + ".png &"
+        command = "feh -x --geometry 1280x800 /home/lumen/Volumetric/model-library/makerook_imgs/" + '%03d' % i + ".png &"
         print("command #" + str(i+1) + " is '" + command + "'")
         return_code = subprocess.call(command, shell=True)
         print(return_code)
