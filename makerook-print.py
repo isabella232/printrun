@@ -135,12 +135,11 @@ currentLayer = 0
     
 
 # layerHeight = 0.1
-layerHeight = 1
-layerTime = 1
-pauseBeforeLift = 1
-pauseForSetpower = 1
-pauseBeforeProject = 2
-liftDistance = 2
+# layerHeight = 1
+# exposureTime = 1
+# pauseBeforeLift = 1
+# pauseBeforeProject = 2
+# liftDistance = 2
 
 
 
@@ -158,87 +157,133 @@ print(return_code)
 
 
 
-while True:
-    # HOME THE PRINTER
-    p.send_now("G28 X")
-    print ("HOMING")
-    time.sleep(20)
-    print ("HOMING COMPLETED!!")
+# HOME THE PRINTER
+p.send_now("G28 X")
+print ("HOMING")
 
 
+z0 = 3
 
-    for i in range(126):
+
+for i in range(238):
     
-        if (i+1)*layerHeight >= 70:
-            #DON'T PRINT MORE THAN 100 mm TOTAL
-            print ("max print distance reached!")
-            break
-    
-        print("\n\n######## CURRENT LAYER IS #" + str(currentLayer+1))
-    
+    if i == 0:
+        # layerHeight = 0.1
+        layerHeight = 0.1
+        exposureTime = 10
+        pauseBeforeLift = 10
+        pauseBeforeExpose = 4
+        pauseToLoadResin = 15
+        liftDistance = 2
+
         # GO TO LAYER POSITION -- LIFT DISTANCE
-        p.send_now("G91; relative positioning")
-        p.send_now("G1 X" + str(liftDistance))
+        p.send_now("G91") # RELATIVE POSITIONING
+        p.send_now("G1 X" + str(z0))
+        p.send_now("G92 X0; you are now at z0")
         
-        # GO TO LAYER POSITION -- LIFT DISTANCE
-        p.send_now("G91; relative positioning")
-        p.send_now("G1 X-" + str(liftDistance-layerHeight))
-        
-        
-        
-        # PROJECT THE IMAGE
-        # command = "feh -x --geometry 1280x800 /home/lumen/Volumetric/model-library/makerook_imgs/" + '%03d' % (i*6) + ".png &"
-        command = "feh -x --geometry 1280x800 /home/lumen/Volumetric/model-library/makerook_imgs/" + '%03d' % i + ".png &"
-        print("command #" + str(i+1) + " is '" + command + "'")
-        return_code = subprocess.call(command, shell=True)
-        print(return_code)
+        print("YOU ARE NOW AT Z0, READY TO BEGIN PRINTING FTW")
         
         # PAUSE BEFORE PROJECT
-        print ("PAUSE BEFORE PROJECTION: " + str(pauseBeforeProject) + " seconds")
-        time.sleep(pauseBeforeProject)
+        print ("PAUSE TO SET Z0: " + str(pauseBeforeLift) + " seconds")
+        time.sleep(pauseBeforeLift)
+
+        p.send_now("G90") # ABSOLUTE POSITIONING
+        p.send_now("G1 X30")
+        
+        # PAUSE BEFORE PROJECT
+        print ("PAUSE TO LOAD RESIN: " + str(pauseToLoadResin) + " seconds")
+        time.sleep(pauseToLoadResin)
+        
+
+        p.send_now("G1 X" + str(layerHeight))
+        p.send_now("G91") # RELATIVE POSITIONING
+        print ("PAUSE TO RETURN TO FIRST LAYER POSITION: " + str(pauseToLoadResin) + " seconds")
+        time.sleep(pauseToLoadResin)
+        
+
+    if i == 1:
+        pauseBeforeLift = 4
+
+    if i > 1:
+        exposureTime = 2
+        # pauseBeforeLift = 1
+        # pauseBeforeExpose = 2
+        # liftDistance = 2
+        
 
 
-        # START PROJECTION
-        command = "setpower 126"
-        print("command #" + str(i+1) + " is '" + command + "'")
-        return_code = subprocess.call(command, shell=True)
-        print(return_code)
-    
-        print ("PROJECTION: " + str(layerTime) + " seconds")
-        time.sleep(layerTime)
+    if (i+1)*layerHeight >= 80:
+        #DON'T PRINT MORE THAN 80 mm TOTAL
+        print ("max print distance reached!")
+        break
 
-        command = "setpower 0"
-        print("command #" + str(i+1) + " is '" + command + "'")
-        return_code = subprocess.call(command, shell=True)
-        print(return_code)
-    
-        #KILLALL FEH
-        command = "killall feh &"
-        print("command #" + str(i+1) + " is '" + command + "'")
-        return_code = subprocess.call(command, shell=True)
-        print(return_code)
+    print("\n\n######## CURRENT LAYER IS #" + str(currentLayer+1))
 
 
+
+    if i > 0:
         # PAUSE BEFORE LIFT
         print ("PAUSE BEFORE LIFT: " + str(pauseBeforeLift) + " seconds")
         time.sleep(pauseBeforeLift)
+
+        # GO TO LAYER POSITION -- LIFT DISTANCE
+        p.send_now("G91; relative positioning")
+        p.send_now("G1 X" + str(liftDistance))
+    
+        # GO TO LAYER POSITION -- LIFT DISTANCE
+        p.send_now("G91; relative positioning")
+        p.send_now("G1 X-" + str(liftDistance-layerHeight))
     
     
     
-
-        print ("MOVE TO NEXT LAYER")
-
-
-
-        # command = "killall feh"
-        # print("command #" + str(i+1) + " is " + command)
-        # return_code = subprocess.call(command, shell=True)
-        # print(return_code)
+    # PROJECT THE IMAGE
+    # command = "feh -x --geometry 1280x800 /home/lumen/Volumetric/model-library/makerook_imgs/" + '%03d' % (i*6) + ".png &"
+    command = "feh -x --geometry 1280x800 /home/lumen/Volumetric/model-library/makerook_imgs/" + '%03d' % i + ".png &"
+    print("command #" + str(i+1) + " is '" + command + "'")
+    return_code = subprocess.call(command, shell=True)
+    print(return_code)
     
-    
+    # PAUSE BEFORE PROJECT
+    print ("PAUSE BEFORE PROJECTION: " + str(pauseBeforeExpose) + " seconds")
+    time.sleep(pauseBeforeExpose)
 
 
-        currentLayer += 1
+    # START PROJECTION
+    command = "setpower 126"
+    print("command #" + str(i+1) + " is '" + command + "'")
+    return_code = subprocess.call(command, shell=True)
+    print(return_code)
+
+    print ("PROJECTION: " + str(exposureTime) + " seconds")
+    time.sleep(exposureTime)
+
+    command = "setpower 0"
+    print("command #" + str(i+1) + " is '" + command + "'")
+    return_code = subprocess.call(command, shell=True)
+    print(return_code)
+
+    #KILLALL FEH
+    command = "killall feh &"
+    print("command #" + str(i+1) + " is '" + command + "'")
+    return_code = subprocess.call(command, shell=True)
+    print(return_code)
+
+
+
+
+    print ("MOVE TO NEXT LAYER")
+
+
+
+    # command = "killall feh"
+    # print("command #" + str(i+1) + " is " + command)
+    # return_code = subprocess.call(command, shell=True)
+    # print(return_code)
+
+
+
+
+    currentLayer += 1
     
 
 
