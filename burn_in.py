@@ -135,7 +135,7 @@ currentLayer = 0
     
 
 # layerHeight = 0.1
-layerHeight = 1
+layerHeight = 0.5
 layerTime = 1
 pauseBeforeLift = 1
 pauseForSetpower = 1
@@ -167,10 +167,10 @@ while True:
 
 
 
-    for i in range(126):
+    for i in range(237):
     
-        if (i+1)*layerHeight >= 70:
-            #DON'T PRINT MORE THAN 100 mm TOTAL
+        if (i+1)*layerHeight >= 80:
+            #DON'T PRINT MORE THAN 90 mm TOTAL
             print ("max print distance reached!")
             break
     
