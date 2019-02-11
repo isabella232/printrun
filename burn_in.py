@@ -169,7 +169,7 @@ while True:
 
     for i in range(237):
     
-        if (i+1)*layerHeight >= 70:
+        if (i+1)*layerHeight >= 50:
             #DON'T PRINT MORE THAN 90 mm TOTAL
             print ("max print distance reached!")
             break
