@@ -27,7 +27,11 @@ def on_timeout(proc, status_dict):
 
 
 
-theCleanPortString = "/dev/lumen-arduino"
+# LINUX
+# theCleanPortString = "/dev/lumen-arduino"
+# MAC OS
+theCleanPortString = "/dev/tty.usbmodem142220"
+
 print(theCleanPortString)
 
 p=printcore(theCleanPortString,250000) # or p.printcore('COM3',250000) on Windows
@@ -43,16 +47,16 @@ print("WELCOME TO VOLUMETRIC'S MOTOR TESTER!")
 p.send_now("G91; relative coordinates")
 stepsPerRev = 1600/200*2
 degreesToMove = 180
-distance = 2
-pause = 2
+distance = .2
+pause = 20
 
 
 
-time.sleep(pause*2)
+# time.sleep(pause/5)
 
 
 
-for i in range(200,2400+200,200):
+for i in range(50,2450,200):
         
     
     
@@ -60,18 +64,20 @@ for i in range(200,2400+200,200):
     print ("################### CURRENT SETTING IS ###################")
     print ("################### " + str(i) + " mA ###################")
     
-    time.sleep(pause)
+    if i != 50:
+        time.sleep(pause/5)
 
-    for i in range (5):
-
-        time.sleep(pause)
-        
-        p.send_now("M906 Y" + str(i))
-        p.send_now("M906 Y" + str(i))
+    print("i is " + str(i))
+    for y in range (2):
         p.send_now("M906 Y" + str(i))
         p.send_now("G0 Y" + str(distance) + " F100")
         # p.send_now("G4 P" + str(pause*1000))
         p.send_now("M400")
+        if y == 1:
+            print("START YOUR ENGINES")
+            time.sleep(pause*2)
+
+    p.send_now("M18")
     
     # time.sleep(pause)
     
