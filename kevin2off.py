@@ -74,7 +74,8 @@ for i in range(80):
     if i == 0:
         # 50 µm printing FTW
         layerHeight = 0.05
-        exposureTime = 13
+        burnInFactor = 3
+        exposureTime = 13*burnInFactor
         pauseBeforeLift = 10
         pauseToFindZero = 60
         pauseBeforeExpose = 4
@@ -111,7 +112,7 @@ for i in range(80):
         pauseBeforeLift = 4
 
     if i > 1:
-        exposureTime = 2
+        exposureTime = exposureTime/burnInFactor
         # pauseBeforeLift = 1
         # pauseBeforeExpose = 2
         # liftDistance = 2
@@ -155,7 +156,7 @@ for i in range(80):
 
 
     # START PROJECTION
-    command = "setpower 126"
+    command = "setpower 105"
     print("command #" + str(i+1) + " is '" + command + "'")
     return_code = subprocess.call(command, shell=True)
     print(return_code)
