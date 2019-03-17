@@ -66,7 +66,7 @@ print ("HOMING")
 z0 = 0
 
 # mm/min
-PRINTSPEED = 100
+PRINTSPEED = 200
 
 
 for i in range(80):
