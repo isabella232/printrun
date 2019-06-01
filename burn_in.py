@@ -34,7 +34,7 @@ def on_timeout(proc, status_dict):
 # args = "exe" # Exe to test
 # test_script = "import time;import sys;time.sleep(%d);sys.exit(100)"
 
-test_script = "killall feh; feh -x --geometry 1280x800 /home/lumen/Volumetric/model-library/LUMEN-logo_imgs/01.png"
+test_script = "killall feh; feh -x --geometry 1280x800 /home/lumen/Volumetric/LightField/model-library/LUMEN-logo_imgs/01.png"
 
 
 
@@ -173,10 +173,10 @@ while True:
 
 
 
-    for i in range(237):
+    for i in range(100):
     
-        if (i+1)*layerHeight >= 50:
-            #DON'T PRINT MORE THAN 90 mm TOTAL
+        #DON'T PRINT MORE THAN THIS HEIGHT, TOTAL
+        if (i+1)*layerHeight >= 39:
             print ("max print distance reached!")
             break
     
@@ -194,7 +194,7 @@ while True:
         
         # PROJECT THE IMAGE
         # command = "feh -x --geometry 1280x800 /home/lumen/Volumetric/model-library/makerook_imgs/" + '%03d' % (i*6) + ".png &"
-        command = "feh -x --geometry 1280x800 /home/lumen/Volumetric/model-library/makerook_imgs/" + '%03d' % i + ".png &"
+        command = "feh -x --geometry 1280x800 /home/lumen/Volumetric/LightField/model-library/makerook_imgs/" + '%03d' % i + ".png &"
         print("command #" + str(i+1) + " is '" + command + "'")
         return_code = subprocess.call(command, shell=True)
         print(return_code)
