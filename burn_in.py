@@ -78,7 +78,7 @@ print(str(p.online) + " that the printer is online now yay!")
 
 
 # def projectLayer():
-#     test_script = "killall feh; setpower 255; feh -x --geometry 1280x800 /home/lumen/Volumetric/model-library/LUMEN-logo_imgs/01.png"
+#     test_script = "killall feh; set-projector-power 255; feh -x --geometry 1280x800 /home/lumen/Volumetric/model-library/LUMEN-logo_imgs/01.png"
 #     succ = 0
 #     fail = 0
 #     # set by timer
@@ -103,7 +103,7 @@ print(str(p.online) + " that the printer is online now yay!")
 #
 #
 # def powerOff():
-#     test_script = "setpower 0"
+#     test_script = "set-projector-power 0"
 #     succ = 0
 #     fail = 0
 #     # set by timer
@@ -145,7 +145,7 @@ liftDistance = 2
 
 
 # TURN OFF PROJECTOR
-command = "setpower 0"
+command = "set-projector-power 0"
 print("command is '" + command + "'")
 return_code = subprocess.call(command, shell=True)
 print(return_code)
@@ -205,7 +205,7 @@ while True:
 
 
         # START PROJECTION
-        command = "setpower 126"
+        command = "set-projector-power 126"
         print("command #" + str(i+1) + " is '" + command + "'")
         return_code = subprocess.call(command, shell=True)
         print(return_code)
@@ -213,7 +213,7 @@ while True:
         print ("PROJECTION: " + str(layerTime) + " seconds")
         time.sleep(layerTime)
 
-        command = "setpower 0"
+        command = "set-projector-power 0"
         print("command #" + str(i+1) + " is '" + command + "'")
         return_code = subprocess.call(command, shell=True)
         print(return_code)
