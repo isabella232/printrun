@@ -166,8 +166,8 @@ return_code = subprocess.call(command, shell=True)
 print(return_code)
 
 # SET FAN AT FULL SPEED
-print("Set Fan at FULLSPEED with M106")
-p.send_now("M106; set fan at full speed")
+# print("Set Fan at FULLSPEED with M106")
+# p.send_now("M106; set fan at full speed")
 
 # SET BED TEMP TO 60 C
 print("Set BED TEMP TO 60 C with M140 S60")

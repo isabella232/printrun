@@ -155,8 +155,8 @@ print("TURN OFF FAN WITH M107")
 p.send_now("M107; turn off fan")
 
 # TURN OFF HEATER
-print("TURN OFF BED HEATER WITH M140 S0")
-p.send_now("M140 S0; turn off bed")
+# print("TURN OFF BED HEATER WITH M140 S0")
+# p.send_now("M140 S0; turn off bed")
 
 
 
