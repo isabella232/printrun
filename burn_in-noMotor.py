@@ -155,8 +155,8 @@ print("TURN OFF FAN WITH M107")
 p.send_now("M107; turn off fan")
 
 # TURN OFF HEATER
-# print("TURN OFF BED HEATER WITH M140 S0")
-# p.send_now("M140 S0; turn off bed")
+print("TURN OFF BED HEATER WITH M140 S0")
+p.send_now("M140 S0; turn off bed")
 
 
 
@@ -170,8 +170,8 @@ print("Set Fan at FULLSPEED with M106")
 p.send_now("M106; set fan at full speed")
 
 # SET BED TEMP TO 60 C
-print("Set BED TEMP TO 60 C with M140 S60")
-p.send_now("M140 S60; set bed temp to 60 C")
+# print("Set BED TEMP TO 60 C with M140 S60")
+# p.send_now("M140 S60; set bed temp to 60 C")
 
 
 while True:
