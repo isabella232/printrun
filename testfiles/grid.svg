@@ -1,7 +1,4 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<svg xmlns="http://www.w3.org/2000/svg" onload='init()' width="150mm" height="150mm" version="1.1">
-<script type='text/ecmascript'>
-	<![CDATA[
+<svg xmlns="http://www.w3.org/2000/svg" width="150mm" height="150mm" onload="init()" version="1.1"><script type="text/ecmascript"><![CDATA[
 	function getParameterByName(name)
 	{
 	  name = name.replace(/[\[]/, "\\\[").replace(/[\]]/, "\\\]");
@@ -52,17 +49,4 @@ console.log(lineblockheight,lineblockwidth)
 	  document.getElementsByClassName('bottomright')[0].setAttribute('y',lineblockheight+'mm');
 
 	}
-	]]>
-</script>
-
-<defs>
-	<pattern id="grd" patternUnits="userSpaceOnUse" width="10mm" height="10mm">
-		<rect class="background" width="10mm" height="10mm" fill="red"/>
-		<rect class="block topleft" width="4.9mm" height="4.9mm"/>
-		<rect class="block topright" width="4.9mm" height="4.9mm" x="4.9mm"/>
-		<rect class="block bottomleft" width="4.9mm" height="4.9mm" y="4.9mm"/>
-		<rect class="block bottomright" width="4.9mm" height="4.9mm" x="4.9mm" y="4.9mm"/>
-	</pattern>
-</defs>
-<rect height="100%" width="100%" fill="url(#grd)"/>
-</svg>
+	]]></script><defs><pattern id="grd" width="10mm" height="10mm" patternUnits="userSpaceOnUse"><rect width="10mm" height="10mm" fill="red" class="background"/><rect width="4.9mm" height="4.9mm" class="block topleft"/><rect width="4.9mm" height="4.9mm" x="4.9mm" class="block topright"/><rect width="4.9mm" height="4.9mm" y="4.9mm" class="block bottomleft"/><rect width="4.9mm" height="4.9mm" x="4.9mm" y="4.9mm" class="block bottomright"/></pattern></defs><rect width="100%" height="100%" fill="url(#grd)"/></svg>
